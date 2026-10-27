@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+katha.sqlite3
+katha.sqlite3-shm
+katha.sqlite3-wal
+/uploads/

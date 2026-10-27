@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f3eb" />
+  <meta name="description" content="A living village archive for knowledge worth carrying forward." />
+  <title>Katha | A living village archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement"><span class="live-dot"></span> A living archive, kept by the people who know it. <a href="#about">How Katha works ↗</a></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Katha home"><span class="brand-mark" aria-hidden="true">✳</span><span>katha<span class="rust">.</span></span></a>
+    <nav class="primary-nav" aria-label="Main navigation"><a class="active" href="#discover">Discover</a><a href="#villages">Our villages</a><a href="#about">About Katha</a></nav>
+    <div class="header-actions">
+      <label class="language-picker"><span>Aa</span><select id="language-select" aria-label="Filter by language"><option>All languages</option><option>Tamil</option><option>Kannada</option><option>Telugu</option><option>Malayalam</option></select></label>
+      <button class="button dark" id="open-contribute" type="button"><span>＋</span> Share knowledge</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" type="button"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="intro" id="discover">
+      <div><p class="eyebrow">THE VILLAGE KNOWLEDGE ARCHIVE</p><h1>Wisdom lives<br />in <em>every village.</em></h1><p class="intro-text">Stories, skills, and living traditions, shared by the people who carry them.</p></div>
+      <aside class="intro-note" id="about"><span>01 / A NOTE FROM KATHA</span><p>Every seed saved, every healing leaf remembered, every story told is a future worth protecting.</p><small>Gathered together, passed on with care.</small></aside>
+    </section>
+
+    <section class="discovery-tools" aria-label="Find knowledge">
+      <div class="search-wrap"><span class="search-icon" aria-hidden="true"></span><input id="search-input" type="search" placeholder="Search a practice, plant, place, or person..." autocomplete="off" /><kbd>⌘ K</kbd></div>
+      <p class="browse-label">EXPLORE BY</p>
+      <div class="category-list" role="group" aria-label="Filter by category">
+        <button class="category-button selected" data-category="All knowledge" type="button">✳ &nbsp;All knowledge <small id="category-count">04</small></button>
+        <button class="category-button" data-category="Farming" type="button">↟ &nbsp;Farming</button>
+        <button class="category-button" data-category="Water" type="button">◒ &nbsp;Water &amp; land</button>
+        <button class="category-button" data-category="Healing" type="button">✳ &nbsp;Healing plants</button>
+        <button class="category-button" data-category="Culture" type="button">〰 &nbsp;Arts &amp; stories</button>
+      </div>
+    </section>
+
+    <section class="archive" aria-live="polite">
+      <div class="section-heading"><div><p class="eyebrow">FROM THE COMMUNITY</p><h2 id="results-heading">Recently gathered</h2></div><button class="text-button" id="sort-button" type="button">Newest first <span>↕</span></button></div>
+      <div class="archive-layout"><div class="story-grid" id="story-grid"></div>
+        <aside class="community-panel" id="villages">
+          <div class="panel-kicker"><span class="live-dot"></span> SAMPLE ARCHIVE</div>
+          <h3>Knowledge<br />belongs to<br /><em>everyone.</em></h3>
+          <p>Carefully recorded, community verified, and always shared freely.</p>
+          <div class="community-stats"><div><strong id="story-count">04</strong><span>sample stories</span></div><div><strong id="village-count">04</strong><span>villages represented</span></div></div>
+          <button class="button light" id="panel-contribute" type="button">Add your voice <span>↗</span></button>
+          <div class="landscape" aria-hidden="true"><i></i><b></b><span></span><span></span><span></span></div>
+        </aside>
+      </div>
+      <p class="backend-message" id="backend-message" role="status" hidden></p>
+      <p class="empty-state" id="empty-state" hidden>No stories found. Try another search or category.</p>
+      <div class="load-more-wrap"><button id="load-more" class="load-more" type="button">Explore the archive <span>↓</span></button></div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="footer-brand" href="#top">katha<span>.</span></a><p>Kept with care. Shared with everyone.</p><span>© 2026 Katha Commons</span></footer>
+
+  <dialog class="contribute-dialog" id="contribute-dialog" aria-labelledby="dialog-title">
+    <form id="contribution-form">
+      <div class="dialog-header"><div><p class="eyebrow">ADD TO THE COMMONS</p><h2 id="dialog-title">Share what you know.</h2></div><button class="close-dialog" type="button" aria-label="Close dialog">×</button></div>
+      <p class="dialog-intro">A small detail can hold generations of wisdom. Start wherever you are.</p>
+      <label class="field-label" for="entry-title">What is this knowledge called?</label><input class="form-input" id="entry-title" name="title" placeholder="e.g. Saving rainwater in stone tanks" required maxlength="72" />
+      <div class="form-row"><div><label class="field-label" for="entry-category">Choose a subject</label><select class="form-input" id="entry-category" name="category"><option>Farming</option><option>Water</option><option>Healing</option><option>Culture</option></select></div><div><label class="field-label" for="entry-language">Language</label><select class="form-input" id="entry-language" name="language"><option>Tamil</option><option>Kannada</option><option>Telugu</option><option>Malayalam</option><option>Other</option></select></div></div>
+      <div class="form-row"><div><label class="field-label" for="entry-person">Who shared it?</label><input class="form-input" id="entry-person" name="person" placeholder="Name of elder or keeper" required /></div><div><label class="field-label" for="entry-place">Village or place</label><input class="form-input" id="entry-place" name="place" placeholder="Village, district" required /></div></div>
+      <label class="field-label" for="entry-description">Tell us a little more</label><textarea class="form-input form-textarea" id="entry-description" name="description" placeholder="How is it done? When is it used? What should others remember?" required maxlength="240"></textarea>
+      <label class="media-picker" for="entry-media"><span class="media-plus">＋</span><span><strong>Add a photo or recording</strong><small>Optional · stored with this local archive</small></span><input id="entry-media" name="media" type="file" accept="image/jpeg,image/png,image/webp,image/gif,audio/*,video/*" /></label>
+      <label class="consent-check"><input name="consent" type="checkbox" value="yes" required /><span>I have permission from the knowledge keeper to share this publicly.</span></label>
+      <p class="form-message" id="form-message" role="status"></p><button class="button dark submit-button" type="submit">Save to the archive <span>↗</span></button><p class="consent-note">Submissions are readable by anyone using this local archive.</p>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
